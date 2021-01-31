@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 
+/*Variable declaration*/
 :root {
     --cell-size: 100px;
     --mark-size: calc(var(--cell-size) * .9);
@@ -11,6 +12,7 @@ body {
     margin: 0;
 }
 
+/*defining the board, in grip display mode, with 3 cols*/
 .board {
     width: 100vw;
     height: 100vh;
@@ -23,24 +25,26 @@ body {
 }
 
 
-
+/*color of x and o after putting*/
 .cell.x::before,
 .cell.x::after,
 .cell.circle::before {
     background-color: black;
 }
 
+/*color of x and o while hovering*/
 .board.x .cell:not(.x):not(.circle):hover::after,
 .board.x .cell:not(.x):not(.circle):hover::before,
 .board.circle .cell:not(.x):not(.circle):hover::before{
     background-color: lightgray;
 }
 
-
+/*inner color of o*/
 .board.circle .cell:not(.x):not(.circle):hover::after{
     background-color: white;
 }
 
+/*defining each cell, flex display, center aligned*/
 .cell {
     width: var(--cell-size);
     height: var(--cell-size);
@@ -52,11 +56,13 @@ body {
     cursor: pointer;
 }
 
+/*cursor style for x and o*/
 .cell.x,
 .cell.circle {
     cursor: not-allowed;
 }
 
+/*Start here */
 .cell:first-child,
 .cell:nth-child(2),
 .cell:nth-child(3) {
@@ -76,9 +82,9 @@ body {
 .cell:nth-child(8) {
     border-bottom: none;
 }
+/*end here, removing the outside border*/
 
-
-
+/*defining basics of x*/
 .cell.x::before,
 .cell.x::after,
 .board.x .cell:not(.x):not(.circle):hover::after,
@@ -89,6 +95,7 @@ body {
     height: var(--mark-size);
 }
 
+/*Start here*/
 .cell.x::after,
 .board.x .cell:not(.x):not(.circle):hover::after {
     transform: rotate(-45deg);
@@ -98,7 +105,9 @@ body {
 .board.x .cell:not(.x):not(.circle):hover::before{
     transform: rotate(45deg);
 }
+/*end here, making the x*/
 
+/*defining the basics of o*/
 .cell.circle::before,
 .cell.circle::after,
 .board.circle .cell:not(.x):not(.circle):hover::after,
@@ -110,6 +119,7 @@ body {
     border-radius: 50%;
 }
 
+/*Start here*/
 .cell.circle::before,
 .board.circle .cell:not(.x):not(.circle):hover::before {
     width: var(--mark-size);
@@ -123,7 +133,9 @@ body {
     height: calc(var(--mark-size)* .7);
     background-color: white;
 }
+/*end here, making the o*/
 
+/*defining the display of winning message*/
 .winning-message {
     display: none;
     position: fixed;
@@ -139,6 +151,7 @@ body {
     flex-direction: column;
 }
 
+/*defining the restart button*/
 .winning-message button{
     font-size: 3rem;
     background-color: white;
@@ -147,12 +160,14 @@ body {
     cursor: pointer;
 }
 
+/*restart button at hover*/
 .winning-message button:hover {
     background-color: black;
     color: white;
     border-color: white;
 }
 
+/*showing the winning screen*/
 .winning-message.show {
     display: flex;
 }
